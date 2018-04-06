@@ -47,7 +47,6 @@ setup(
     },
 
     packages=["jsonschema", "jsonschema.tests"],
-    package_data={"jsonschema": ["schemas/*.json"]},
 
     entry_points={"console_scripts": ["jsonschema = jsonschema.cli:main"]},
 )
