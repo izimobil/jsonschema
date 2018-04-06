@@ -1,9 +1,9 @@
 import itertools
 import json
-import pkgutil
 import re
 
 from jsonschema.compat import str_types, MutableMapping, urlsplit
+from jsonschema.schemas import SCHEMAS
 
 
 class URIDict(MutableMapping):
@@ -50,12 +50,11 @@ class Unset(object):
 
 def load_schema(name):
     """
-    Load a schema from ./schemas/``name``.json and return it.
+    Load a schema from `jsonschema.schemas.SCHEMAS` and return it.
 
     """
 
-    data = pkgutil.get_data('jsonschema', "schemas/{0}.json".format(name))
-    return json.loads(data.decode("utf-8"))
+    return json.loads(SCHEMAS[name])
 
 
 def indent(string, times=1):
