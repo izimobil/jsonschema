@@ -7,11 +7,6 @@ import numbers
 
 from six import add_metaclass
 
-try:
-    import requests
-except ImportError:
-    requests = None
-
 from jsonschema import _utils, _validators, _types
 from jsonschema.compat import (
     Sequence, urljoin, urlsplit, urldefrag, unquote, urlopen,
@@ -158,7 +153,7 @@ def create(
 
         default_types (collections.Mapping):
 
-            .. deprecated:: 2.7.0
+            .. deprecated:: 3.0.0
 
                 Please use the type_checker argument instead.
 
@@ -671,6 +666,10 @@ class RefResolver(object):
         .. _requests: http://pypi.python.org/pypi/requests/
 
         """
+        try:
+            import requests
+        except ImportError:
+            requests = None
 
         scheme = urlsplit(uri).scheme
 

@@ -39,9 +39,11 @@ classes should adhere to.
         whose `FormatChecker.conforms` method will be called to
         check and see if instances conform to each :validator:`format`
         property present in the schema. If unprovided, no validation
-        will be done for :validator:`format`.
+        will be done for :validator:`format`. Certain formats require
+        additional packages to be installed (ipv5, uri, color, date-time).
+        The required packages can be found at the bottom of this page.
     :argument types:
-        .. deprecated:: 2.7.0
+        .. deprecated:: 3.0.0
 
             Use `TypeChecker.redefine` and
             `jsonschema.validators.extend` instead of this argument.
@@ -77,7 +79,7 @@ classes should adhere to.
 
     .. attribute:: DEFAULT_TYPES
 
-        .. deprecated:: 2.7.0
+        .. deprecated:: 3.0.0
 
             Use of this attribute is deprecated in favor of the new `type
             checkers <TypeChecker>`.
@@ -313,6 +315,12 @@ to validate. Their names can be viewed by inspecting the
 `FormatChecker.checkers` attribute. Certain checkers will only be
 available if an appropriate package is available for use. The available
 checkers, along with their requirement (if any,) are listed below.
+
+.. note::
+
+    If the following packages are not installed when using a checker
+    that requires it, validation will succeed without throwing an error,
+    as specified by the JSON Schema specification.
 
 ==========  ====================
 Checker     Notes
